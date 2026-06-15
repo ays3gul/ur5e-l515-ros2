@@ -1,0 +1,4 @@
+arm_control:
+  ros__parameters:
+    arm_name: "camera_manipulator"
+    world_frame_id: "world"

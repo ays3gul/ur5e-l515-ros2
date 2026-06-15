@@ -1,0 +1,5 @@
+arm_control:
+  ros__parameters:
+    # Groups of 10: [dim_x, dim_y, dim_z, pos_x, pos_y, pos_z, ori_x, ori_y, ori_z, ori_w]
+    obstacles: [1.0,  1.0,  0.4, 0.0,  0.0,  0.27, 0.0, 0.0, 0.0, 1.0,
+                0.25, 0.25, 0.5, 0.5, -0.4,  1.1,  0.0, 0.0, 0.0, 1.0]
