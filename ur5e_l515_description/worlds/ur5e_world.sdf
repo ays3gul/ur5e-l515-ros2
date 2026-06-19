@@ -54,7 +54,7 @@
     </model>
     <model name="bunny">
       <static>true</static>
-      <pose>0.5 -0.4 1.0 0 0 0</pose>
+      <pose>0.5 -0.25 1.0 0 0 0</pose>
       <link name="body">
         <collision name="collision">
           <geometry>

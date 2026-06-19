@@ -117,7 +117,7 @@ def generate_launch_description():
             Node(
                 package="controller_manager",
                 executable="spawner",
-                arguments=["scaled_joint_trajectory_controller", "--controller-manager", "/controller_manager"],
+                arguments=["joint_trajectory_controller", "--controller-manager", "/controller_manager"],
                 output="screen",
             )
         ],

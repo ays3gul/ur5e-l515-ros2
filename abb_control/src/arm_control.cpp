@@ -12,12 +12,6 @@ ArmControl::ArmControl(rclcpp::Node::SharedPtr node,
 ArmControl::~ArmControl() {}
 
 bool ArmControl::MoveToGoal(const geometry_msgs::msg::Pose& goal_pose) {
-  // DDS RELIABLE retransmits action goals when the connection has been idle.
-  // Call stop() first to warm the cancel channel and flush any stale goals,
-  // then sleep so move_group processes the cancels before we plan.
-  move_group_.stop();
-  rclcpp::sleep_for(std::chrono::milliseconds(300));
-
   moveit::planning_interface::MoveGroupInterface::Plan my_plan;
   move_group_.setPoseTarget(goal_pose);
 
@@ -26,10 +20,6 @@ bool ArmControl::MoveToGoal(const geometry_msgs::msg::Pose& goal_pose) {
               success ? "SUCCEEDED" : "FAILED");
 
   if (success) {
-    // Cancel any duplicate plan goals that DDS delivered before executing.
-    move_group_.stop();
-    rclcpp::sleep_for(std::chrono::milliseconds(300));
-
     success = static_cast<bool>(move_group_.execute(my_plan));
     RCLCPP_INFO(node_->get_logger(), "Execution (pose goal) %s",
                 success ? "SUCCEEDED" : "FAILED");
